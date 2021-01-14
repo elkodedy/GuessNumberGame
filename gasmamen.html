@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PLAY NOW!!</title>
+</head>
+<body>
+	<div id="homePage">
+		
+	</div>
+	<div id="gamePage">
+		<div id="status">
+			<div id="lower">..</div>
+			<div id="inInput">..</div>
+			<div id="higher">..</div>
+		</div>
+		<input id="input" onkeypress="enter(this, event)" oninput="masuk()" type="number"></input><br>
+		<button id="cek" onclick="cek()">cek</button>
+		<p id="out1">-</p>
+		<p id="out2">-</p>
+		<p id="out3">-</p>
+	</div>
+	<div id="hal3"></div>
+	<div id="hal4"></div>
+	<div id="hal5"></div>
+	<div id="hal6"></div>
+	<div id="hal7"></div>
+	<style type="text/css">
+		body{
+			margin: 0;
+		}
+		#homePage{
+			text-align: center;
+			height: 100vh;
+			width: 100%;
+			max-width: 100%;
+			max-height: 100vh;
+			background-color: #0583C6;
+		}
+		#gamePage{
+			text-align: center;
+			height: 100vh;
+			width: 100%;
+			max-width: 100%;
+			max-height: 100vh;
+			background-color: #FA1729;
+		}
+
+		/*ini status bar*/
+		#status{
+			font-size: 40px;
+			padding-top: 10%;
+		}
+		#lower{
+			text-align: right;
+			/*background-color: #FFB900;*/
+			width: 35%;
+			float: left;
+			overflow: hidden;
+			margin: 0 2% 0 5%;
+			direction: rtl;
+		}
+		#inInput{
+			/*background-color: #FFF14C;*/
+			width: 16%;
+			float: left;
+			overflow: hidden;
+		}
+		#higher{
+			text-align: left;
+			/*background-color: #7DBA00;*/
+			width: 35%;
+			margin: 0 5% 0 2%;
+			float: left;
+			overflow: hidden;
+		}
+
+		/*ini input bar*/
+		#input{
+			/*margin-top: 15%;*/
+			width: 30%;
+			height: 10%;
+			font-size: 200%;
+			overflow: hidden;
+		}
+
+		#hal3{
+			height: 100vh;
+			background: green;
+		}
+		#hal4{
+			height: 100vh;
+			background: blue;
+		}
+		#hal5{
+			height: 100vh;
+			background: yellow;
+		}
+		#hal6{
+			height: 100vh;
+			background: lightblue;
+		}
+		#hal3{
+			height: 100vh;
+			background: gray;
+		}
+
+	</style>
+	<script type="text/javascript">
+		var inputan;
+		var lower = "",inInput = "",higher = "",x=40,y,i=0;
+		var nilai = Math.floor((Math.random() * 10) + 1);
+		function cek() {
+			
+			inputan = parseInt(document.getElementById('input').value);
+			if (inputan==nilai){
+				document.getElementById('out1').innerHTML = "You Are Right";
+				document.getElementById('gamePage').style.background = "#008A15";
+			}
+			else if (inputan<nilai){
+				document.getElementById('out1').innerHTML = "To Low";
+				
+				// 
+				var getLower = lower;
+				lower = ".." + inputan;
+				lower += getLower;
+				document.getElementById('lower').innerHTML = lower;
+				document.getElementById('inInput').innerHTML = "..";
+			}
+			else if (inputan>nilai){
+				document.getElementById('out1').innerHTML = "To High";
+				
+				// 
+				var getHigher = higher;
+				higher = ".." + inputan;
+				higher += getHigher;
+				document.getElementById('higher').innerHTML = higher;
+				document.getElementById('inInput').innerHTML = "..";
+			}
+			document.getElementById('input').value = "";
+		}
+
+		function masuk(){
+			if(document.getElementById('input').value != "")
+				document.getElementById('inInput').innerHTML = document.getElementById('input').value;
+			else
+				document.getElementById('inInput').innerHTML = "..";
+		}
+
+
+		function enter(inField, e) {
+			var charCode;
+     	  	if(e && e.which){
+     	       charCode = e.which;
+     	  	}
+     	  	else if(window.event){
+     	       e = window.event;
+     	       charCode = e.keyCode;
+     	  	}
+     	  	if(charCode == 13){
+     	  		cek();
+	   		}
+	   	}
+	</script>
+</body>
+</html>
