@@ -8,6 +8,11 @@
 		
 	</div>
 	<div id="gamePage">
+		<h3>
+			<center>
+				Guess Number From 1 to 100
+			</center>
+		</h3>
 		<div id="status">
 			<div id="lower">..</div>
 			<div id="inInput">..</div>
@@ -108,7 +113,7 @@
 	<script type="text/javascript">
 		var inputan;
 		var lower = "",inInput = "",higher = "",x=40,y,i=0;
-		var nilai = Math.floor((Math.random() * 10) + 1);
+		var nilai = Math.floor((Math.random() * 100) + 1);
 		function cek() {
 			
 			inputan = parseInt(document.getElementById('input').value);
